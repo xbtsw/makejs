@@ -1,7 +1,7 @@
 {
   "name": "makejs",
   "version": "1.0.0",
-  "description": "make in js",
+  "description": "create declarative, parallel and incremental makefile in javascript",
   "main": "index.js",
   "bin": { "makejs": "./bin/makejs.js" },
   "scripts": {
