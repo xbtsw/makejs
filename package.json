@@ -1,0 +1,29 @@
+{
+  "name": "makejs",
+  "version": "1.0.0",
+  "description": "make in js",
+  "main": "index.js",
+  "bin": { "makejs": "./bin/makejs.js" },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xbtsw/makejs.git"
+  },
+  "author": "xbtsw <xbtsw.chen@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xbtsw/makejs/issues"
+  },
+  "homepage": "https://github.com/xbtsw/makejs",
+  "dependencies": {
+    "async": "^0.9.0",
+    "chalk": "^1.0.0",
+    "lodash": "^3.3.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^5.0.1"
+  }
+}
