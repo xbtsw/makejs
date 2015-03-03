@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 
 'use strict';
+
+var path = require('path');
+var make = require('makejs');
+var chalk = require('chalk');
+
 try {
-    require(require('path').resolve('makefile.js'));
+    require(path.resolve('makefile.js'));
     if (process.argv.length < 3) {
         throw new Error('target argument is not provided');
     }
-    require('makejs').run(process.argv[2], function(err) {
+    make.run(process.argv[2], function(err) {
         if (err != null) {
             throw err;
         }
     });
 }
 catch (err){
-    console.error(require('chalk').red.bold(err));
+    console.error(chalk.red.bold(err));
 }

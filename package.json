@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "create declarative, parallel and incremental makefile in javascript",
   "main": "index.js",
-  "bin": { "makejs": "./bin/makejs.js" },
+  "bin": {
+    "makejs": "./bin/makejs.js"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -20,9 +22,11 @@
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^1.0.0",
+    "is-absolute": "^0.1.5",
     "lodash": "^3.3.1"
   },
   "devDependencies": {
+    "fs-extra": "^0.16.4",
     "mocha": "^2.1.0",
     "should": "^5.0.1"
   }
