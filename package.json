@@ -1,5 +1,5 @@
 {
-  "name": "makejs",
+  "name": "make-js",
   "version": "1.0.0",
   "description": "create declarative, parallel and incremental makefile in javascript",
   "main": "index.js",

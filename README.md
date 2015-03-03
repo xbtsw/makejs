@@ -3,7 +3,7 @@ _create declarative, parallel and incremental makefile in javascript_
 
 ## Sample makefile.js
 ```js
-var make = require('makejs');
+var make = require('make-js');
 var glob = require('glob').sync;
 var concat = require('concat');
 var path = require('path');
