@@ -99,9 +99,18 @@ makejs .tmp/js/user.js
 
 ## Getting makejs
 
+1. Install globally, this is just so that you can run `makejs` command line directly,
+if you have `./node_modules/.bin` on your PATH then you can skip this step.
 ```
-npm install make-js
+npm install make-js -g
 ```
+
+2. Install and save makejs as your development dependencies.
+```
+npm install make-js --save-dev
+```
+
+Now you can start writing makefile, have fun!
 
 ## License
 
