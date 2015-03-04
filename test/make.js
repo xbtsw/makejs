@@ -73,7 +73,7 @@ describe('make', function() {
         var tmp = path.resolve(__dirname, '../.tmp');
         beforeEach('clean up .tmp dir', function(done) {
             fs.remove(tmp, function(err) {
-                if (err !== null && err.code !== 'ENOENT') {
+                if (err && err.code !== 'ENOENT') {
                     done(err);
                 }
 
@@ -118,6 +118,21 @@ describe('make', function() {
                 err.message.should.match(/^Circular dependencies detected$/);
                 done();
             });
+            
+            make.emit('done');
+        });
+        it('Should throw error if some of the actions did not call done()', function(done) {
+            var make = new Make();
+
+            make.rule(':test', [], function(){});
+
+            make.run(':test', function(err) {
+                err.should.be.Error;
+                err.message.should.match(/^Target\(s\) '.+' did not call done$/);
+                done();
+            });
+            
+            make.emit('done');
         });
         it('Should silently success on phony targets that have no action defined', function(done) {
             var make = new Make();
@@ -160,6 +175,58 @@ describe('make', function() {
                     executed.should.be.false;
                     done();
                 });
+            });
+        });
+        it('Should not error out if target is a file target and does not exist', function(done){
+            var make = new Make();
+            var src = path.resolve(__dirname, 'assets/test1');
+            var target = path.resolve(tmp, 'test1');
+            make.rule(target, [src], function(done){
+                fs.copy(src, target, function(err){
+                    done(err);
+                });
+            });
+            
+            make.run(target, function(err){
+                should(err).be.null;
+                done();
+            });
+        });
+        it('Should not error out if multiple files listed as src of a file target', function(done){
+            var make = new Make();
+            var src1 = path.resolve(__dirname, 'assets/test1');
+            var src2 = path.resolve(__dirname, 'assets/test2');
+            var target = path.resolve(tmp, 'test1');
+            make.rule(target, [src1, src2], function(done){
+                fs.copy(src1, target, function(err){
+                    done(err);
+                });
+            });
+            
+            make.run(target, function(err){
+                should(err).be.null;
+                done();
+            });
+        });
+        it("Should not execute the target is not belong to the requested target's dependency tree", function(done){
+            var make = new Make();
+            
+            function popret(done, target) {
+                ret.push(target);
+                done();
+            }
+            var ret = [];
+
+            make.rule(":test1", [":test2"], popret);
+            make.rule(":test2", [], function(done){
+                setImmediate(done);
+            });
+            make.rule(":test3", [], popret);
+            
+            make.run(':test1', function(err){
+                should(err).be.null;
+                ret.should.be.eql([':test1']);
+                done();
             });
         });
     });

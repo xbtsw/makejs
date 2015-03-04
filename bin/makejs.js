@@ -3,7 +3,7 @@
 'use strict';
 
 var path = require('path');
-var make = require('makejs');
+var make = require('make-js');
 var chalk = require('chalk');
 
 try {
@@ -12,7 +12,7 @@ try {
         throw new Error('target argument is not provided');
     }
     make.run(process.argv[2], function(err) {
-        if (err !== null) {
+        if (err) {
             throw err;
         }
     });
