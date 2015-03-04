@@ -26,16 +26,6 @@ invocation, or used when a target doesn't produce a file as its outcome. Excessi
 make your build less incremental.
 
 
-### define(target, dependencies, action)
-Define a `target` with `dependencies`, with `action` as its recipe.
-
-####target
-Type: `string`
-
-A string represent the name of this target, 
-when you ask makejs to make a `target`, the `action` is garenteed to be executed
-only after all of the dependencies are fulfilled.
-
 
 
 
