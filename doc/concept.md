@@ -24,11 +24,3 @@ among a dependencies of a target, the target always get rebuild.
 For this reason, a _phony target_ is only recommanded to be used as alias of a _file target_ to ease commandline 
 invocation, or used when a target doesn't produce a file as its outcome. Excessive use of _phony target_ will 
 make your build less incremental.
-
-
-
-
-
-dependencies: `[string]`
-
-action: `function`
