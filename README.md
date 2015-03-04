@@ -35,7 +35,8 @@ coffeeScripts.forEach(function(f) {
     // on subsequent runs, each js file will only be recompiled if
     // source is changed since last compile
     make.rule(f.dest, f.src, function(done, target, deps) {
-        // just use command-line ;P, you can also call coffee.compile().
+        // I am lazy so I just call command-line, you can also call 
+        // coffee.compile() instead.
         // the compilations of the files will be parallel since we used async exec.
         exec('coffee -o ' + path.dirname(target) + ' -c ' + deps[0], function(err) {
             // call done() when done, optionally with err.
@@ -94,6 +95,12 @@ makejs :watch
 Just want to build one specific file?
 ```
 makejs .tmp/js/user.js
+```
+
+## Getting makejs
+
+```
+npm install make-js
 ```
 
 ## License
