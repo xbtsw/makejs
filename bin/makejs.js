@@ -3,7 +3,10 @@
 'use strict';
 
 var path = require('path');
-var make = require('make-js');
+var resolve = require('resolve').sync;
+var make = require(resolve('make-js', {
+    basedir: process.cwd()
+}));
 var chalk = require('chalk');
 
 try {
@@ -17,6 +20,6 @@ try {
         }
     });
 }
-catch (err){
+catch (err) {
     console.error(chalk.red.bold(err));
 }
