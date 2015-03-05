@@ -9,7 +9,7 @@ module.exports = (function() {
     return {
         rule: make.rule.bind(make),
         run: make.run.bind(make),
-        cwd: make.cwd.bind(make),
+        baseDir: make.cwd.bind(make),
         args: make.args.bind(make),
         Make: Make
     };
