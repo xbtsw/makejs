@@ -20,9 +20,11 @@ When coding your makefile, if you got a very project specific requirement. Go ah
 logic in your makefile, if too long to code directly inside makefile, make a module and `require`
 it.
 
-If you find a solution to a common problem that no package exist on npm solves it, feel free to
+If you find a solution to a common problem that no package exist on npm solves it well, feel free to
 create a npm package for the problem. When creating the package, keep in mind that it may also be 
-useful for other purpose other than makefile (for server, web page, etc).
+useful for other purpose other than makefile (for server, web page, etc). So it is recommended to 
+make your API as fluid as possible, focus on one problem as much as possible. In particular, avoid
+creating a catch-all function with countless options configuered with a json object ;]
 
 ## Debug your makefile with node debugger
 
