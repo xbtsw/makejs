@@ -24,21 +24,3 @@ among a dependencies of a target, the target always get rebuild.
 For this reason, a _phony target_ is only recommanded to be used as alias of a _file target_ to ease commandline 
 invocation, or used when a target doesn't produce a file as its outcome. Excessive use of _phony target_ will 
 make your build less incremental.
-
-
-### define(target, dependencies, action)
-Define a `target` with `dependencies`, with `action` as its recipe.
-
-####target
-Type: `string`
-
-A string represent the name of this target, 
-when you ask makejs to make a `target`, the `action` is garenteed to be executed
-only after all of the dependencies are fulfilled.
-
-
-
-
-dependencies: `[string]`
-
-action: `function`
