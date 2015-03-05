@@ -41,28 +41,43 @@ put breakpoints, step thru, do whatever you like.
 ## Avoid phony targets as much as possible
 
 By its nature, phony targets makes your build less incremental. Use file dependencies as much
-as possible
+as possible. As a rule of thumb, phony target is most suited to create a alias for easier
+commandline invocation, sitting on the tip of the dependency tree. (i.e. nothing depends on it)
 
-**Good**
-
-Each of your html file only got recompiled if the corresponding jade file is changed.
+Assume you have:
 ```js
 var src = ['jade/file1.jade', 'jade/file2.jade'];
 var dest = ['html/file1.html', 'html/file2.html'];
 
+// This is a good use of phony target for easy invocation
+// so instead of:
+//
+// makejs html/file1.html
+// makejs html/file2.html
+//
+// we can do both with
+// 
+// makejs :jade
+make.rule(':jade', dest);
+```
+
+**Good**
+
+Each of your html file only got recompiled if the corresponding jade file is changed.
+
+```js
 src.forEach(function(s, index){
   make.rule(dest[index], [s], function(done){
     //compile jade
   });
 });
-//for easy invocation
-make.rule(':jade', dest);
 ```
 
 **Bad**
 
 Trying to use phony target as "variable", why not just use javascript variables?
 This leads all html being recompiled every single build
+
 ```js
 make.rule(':jade_src', src);
 src.forEach(function(d){
