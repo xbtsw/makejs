@@ -11,6 +11,13 @@ make.baseDir(__dirname);
 
 This is especially useful if you have multi-makefile setup which each makefile govern a subtree.
 
+You can also change the current working directory to the same directory as your makefile.js
+to avoid any surprise.
+
+```js
+process.chdir(__dirname);
+```
+
 ## Make use of existing npm packages as much as possible.
 
 makejs promote use and creation of general purpose npm packages, rather than framework specific 
