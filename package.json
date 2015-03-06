@@ -7,7 +7,8 @@
     "makejs": "./bin/makejs.js"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,9 @@
     "resolve": "^1.1.5"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "fs-extra": "^0.16.4",
+    "istanbul": "^0.3.7",
     "mocha": "^2.1.0",
     "should": "^5.0.1"
   }
