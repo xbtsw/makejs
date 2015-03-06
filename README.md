@@ -1,6 +1,9 @@
 # makejs
 _create declarative, parallel and incremental makefile in javascript_
 
+[![Build Status](https://travis-ci.org/xbtsw/makejs.svg?branch=master)](https://travis-ci.org/xbtsw/makejs)
+[![Coverage Status](https://coveralls.io/repos/xbtsw/makejs/badge.svg)](https://coveralls.io/r/xbtsw/makejs)
+
 ## Documentation
 For detailed documentation of main API `make.rule()`, recipes and tips writing makefile.js, visit [documentation page](/doc/README.md)
 
