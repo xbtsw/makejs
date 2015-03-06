@@ -22,11 +22,23 @@ A array of `string` represent the dependencies of this target.
 * otherwise the string is considered a file target, if the path is relative
 it will be resolved to absolute path based on `make.baseDir()` setting.
 
+If you call `make.rule()` multiple times for a same target, the dependencies
+is the union of all dependencies.
+
+```js
+make.rule('output.js', ['a.js', 'b.js']);
+// At this point, output.js depends on a.js and b.js
+make.rule('output.js', ['b.js', 'c.js']);
+// At this point, output.js depends on a.js, b.js and c.js
+```
+
 ##### action
 Type: `function(done, target, dependencies)`
 
 A function will be called when the all of the dependencies are fulfilled and the 
-target is being make.
+target is being make. If action is never defined for a certain target, then when
+the target get executed it will do a no-op function. If a action is specified for
+a target and later specified again, the latter will overwrite the earlier definition.
 
 The function will receive three arguments:
 * `done(err)` when the action is finished executing, you must call `done()`. 
