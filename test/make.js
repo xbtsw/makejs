@@ -121,6 +121,20 @@ describe('make', function() {
             
             make.emit('done');
         });
+        it('Should not throw error if two required targets depends on the same target', function(done) {
+            var make = new Make();
+
+            make.rule(':test', [':test1', ':test2']);
+            make.rule(':test1', [':test3']);
+            make.rule(':test2', [':test3']);
+
+            make.run(':test', function(err) {
+                should(err).be.null;
+                done();
+            });
+            
+            make.emit('done');
+        });
         it('Should throw error if some of the actions did not call done()', function(done) {
             var make = new Make();
 
