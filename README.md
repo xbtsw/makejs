@@ -117,6 +117,10 @@ if you have `./node_modules/.bin` on your `PATH` then you can skip this step.
 
 Now you can start writing makefile, have fun!
 
+## Documents
+
+Checkout detailed [makejs Documents](https://github.com/xbtsw/makejs/tree/master/doc) that describe every aspect of makejs.
+
 ## License
 
 MIT License, see `LICENSE` file for details.
